@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace：最主要的作用就是绑定mapper.xml与对应那个Mapper接口的关系，要求
+接口名称为：全限定名 -->
+<mapper namespace="mapper.DeptMapper">
+    <!--为了就是简化sql语句，使其别名映射到定义的值对象
+    其中id是用来映射主键，result用来映射非主键
+    -->
+    <resultMap id="deptMap" type="Vo.DeptVo">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <collection property="users" ofType="entity.User">
+            <!--user类的主键不会影响上面的主键-->
+            <id column="id" property="id"></id>
+            <result column="username" property="username"></result>
+            <result column="password" property="password"></result>
+        </collection>
+    </resultMap>
+    <!-- DeptVo findDept(Integer id) -->
+    <select id="findDept" resultMap="deptMap">
+        select
+            d.id as id,
+            d.name as name,
+            u.id as id,
+            u.username as username,
+            u.password as password
+        from
+            tb_dept d
+                left join
+            tb_user u
+            on
+                d.id = u.dept_id
+        where
+            d.id=#{id};
+    </select>
+</mapper>
