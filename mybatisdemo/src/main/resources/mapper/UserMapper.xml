@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+    <!-- insert() -->
+    <!--<insert id="insert">
+        insert into tb_user(username,password) values('小明','123')
+    </insert>-->
+
+    <!--<delete id="delete">
+        delete from tb_user where username=’小红‘
+    </delete>-->
+
+    <!--select-->
+    <!--<select id="select" resultType="Entity.User">
+        select * from tb_user where username='小红'
+    </select>-->
+
+    <!--selectAll-->
+    <!--<select id="selectAll" resultType="Entity.User">
+        select * from tb_user
+    </select>-->
+
+    <!-- Map<String,Object> findUserToMap(int id); -->
+
+    <!--<select id="findUserToMap" resultType="map">
+        select * from tb_user where id = #{id}
+    </select>-->
+
+    <!-- List<UserVO> findUserDept(); 多表查询，查询语句比较复杂，一般使用xml文件进行书写-->
+
+    <!--<select id="findUserDept" resultType="vo.UserVO">
+        select u.id,u.username,d.name
+        from tb_user u
+                 left join tb_dept d
+                           on u.dept_id=d.id;
+    </select>-->
+</mapper>

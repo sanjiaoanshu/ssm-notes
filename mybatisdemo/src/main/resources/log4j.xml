@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Log4j 2.x 的配置文件 -->
+<Configuration status="WARN">
+    <!-- 定义 Appenders（日志输出器） -->
+    <Appenders>
+        <!-- 控制台输出的 Appender -->
+        <Console name="STDOUT" target="SYSTEM_OUT">
+            <!-- 日志格式化布局 -->
+            <PatternLayout pattern="%-5p %d{MM-dd HH:mm:ss,SSS} %m (%F:%L) %n"/>
+        </Console>
+    </Appenders>
+
+    <!-- 定义 Loggers（日志记录器） -->
+    <Loggers>
+        <!-- 定义一个特定名称的日志记录器（java.sql） -->
+        <Logger name="java.sql" level="debug"/>
+
+        <!-- 定义另一个特定名称的日志记录器（org.apache.ibatis） -->
+        <Logger name="org.apache.ibatis" level="info"/>
+
+        <!-- 定义根日志记录器 -->
+        <Root level="debug">
+            <!-- 关联 Appender -->
+            <AppenderRef ref="STDOUT"/>
+        </Root>
+    </Loggers>
+</Configuration>
